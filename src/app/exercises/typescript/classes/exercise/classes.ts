@@ -1,29 +1,30 @@
-// @ts-nocheck
+//// @ts-nocheck
+//tslint:disable
 class Animal {
   name: string
 
-  constructor(name: any) {
+  constructor(name: string) {
     this.name = name
   }
 
-  move(distance: any) {
+  move(distance: number) {
     console.log('Moved ' + distance + ' meters')
   }
 }
 
 class Dog extends Animal {
-  constructor(name: any) {
+  constructor(name: string) {
     super(name)
   }
 
-  move(distance = 5) {
+  override move(distance = 5) {
     console.log(this.name + ' moves...')
     super.move(distance)
   }
 }
 
 const dog = new Dog('Tobby')
-dog.move()
+dog.move() //no hay que pasarle parámetros? o se pasa por defecto?
 
 class ClassWithPrivateMethodsAndProperties {
   publicProperty = 42
@@ -39,18 +40,24 @@ class ClassWithPrivateMethodsAndProperties {
 }
 
 class ImprovedConstructorAssignment {
-  constructor(public name: any) {}
+  constructor(public name: string) {}
 
-  move(distance: any) {
+  move(distance: number) {
+    console.log('Moved ' + distance + ' meters')
+  }
+}
+
+class Person extends Animal {
+  override move(distance: number = 3) {
     console.log('Moved ' + distance + ' meters')
   }
 }
 
 class ReadonlyClass {
   constructor(
-    public readonly name: any,
-    private readonly foo: any,
-    private readonly person: any,
+    public readonly name: string,
+    private readonly foo: number,
+    private readonly person: Person,
   ) {}
 
   bar(): any {
@@ -58,6 +65,8 @@ class ReadonlyClass {
     return this.name + this.foo
   }
 }
+
+let foo: ReadonlyClass
 
 abstract class CostCalculator {
   abstract billingCost(): any
