@@ -48,6 +48,14 @@ class ImprovedConstructorAssignment {
 }
 
 class Person extends Animal {
+  age: number
+
+  constructor(name, age) {
+    super(name)
+    this.age = age
+  }
+
+  public
   override move(distance: number = 3) {
     console.log('Moved ' + distance + ' meters')
   }
