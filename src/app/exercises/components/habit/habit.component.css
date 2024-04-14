@@ -1,0 +1,13 @@
+.single-habit {
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-style: bold;
+  border: 1px solid black;
+  border-radius: var(--border-radius);
+}
+
+.habit-name {
+  color: var(--primary-color);
+}
