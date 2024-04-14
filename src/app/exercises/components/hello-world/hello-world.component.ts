@@ -9,6 +9,7 @@ import { Component } from '@angular/core'
       color: var(--primary-color);
     }
   `,
+  imports: [],
 })
 export class HelloWorldComponent {
   text: string = 'Hello World'

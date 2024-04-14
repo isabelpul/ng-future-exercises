@@ -7,4 +7,6 @@ import { Component } from '@angular/core'
   standalone: true,
   imports: [],
 })
-export class FilesDistributionComponent {}
+export class FilesDistributionComponent {
+  text: string = 'Hello world'
+}
