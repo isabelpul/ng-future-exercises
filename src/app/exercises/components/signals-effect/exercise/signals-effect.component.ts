@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, WritableSignal, Signal, signal, computed, effect } from '@angular/core'
 
 @Component({
   selector: 'app-signals-effect',
@@ -7,4 +7,24 @@ import { Component } from '@angular/core'
   standalone: true,
   imports: [],
 })
-export class SignalsEffectComponent {}
+export class SignalsEffectComponent {
+  count: WritableSignal<number> = signal(0)
+  doubleCount: Signal<number> = computed(() => this.count() * 2)
+  displayAlert = computed(() => this.count() > 5)
+
+  constructor() {
+    effect(() => {
+      if (this.displayAlert()) {
+        alert('El contador es > 5')
+      }
+    })
+  }
+
+  increment() {
+    this.count.update(value => value + 1)
+  }
+
+  decrement() {
+    this.count.update(value => value - 1)
+  }
+}
